@@ -6,6 +6,14 @@ addons:
   apt:
     packages: &common_deps
       - ninja-build
+      - qtbase5-dev
+      - libboost-thread-dev
+      - libboost-system-dev
+      - libboost-regex-dev
+      - libboost-date-time-dev
+      - libboost-filesystem-dev
+      - libboost-program-options-dev
+      - libboost-test-dev
 
 matrix:
   include:
