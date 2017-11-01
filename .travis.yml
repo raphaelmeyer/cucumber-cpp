@@ -2,11 +2,6 @@ language: cpp
 sudo: false
 dist: trusty
 
-addons:
-  apt:
-    packages:
-      - ninja-build
-
 matrix:
   include:
     - os: linux
@@ -31,6 +26,12 @@ matrix:
 
 before_install:
   - eval "${MATRIX_EVAL}"
+
+install:
+  addons:
+    apt:
+      packages:
+        - ninja-build
 
 script: ./travis.sh
 
