@@ -4,7 +4,7 @@ dist: trusty
 
 addons:
   apt:
-    packages:
+    packages: &common_deps
       - ninja-build
 
 matrix:
@@ -15,6 +15,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
+            - *common_deps
             - g++-7
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
@@ -23,9 +24,12 @@ matrix:
       addons:
         apt:
           sources:
-            - llvm-toolchain-trusty-5.0
+            - sourceline: 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main'
+              key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
           packages:
+            - *common_deps
             - clang-5.0
+            - llvm-5.0-dev
       env:
         - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
 
